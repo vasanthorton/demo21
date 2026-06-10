@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Developer Portfolio</title>
+    <meta name="description" content="Portfolio of a Senior Angular Developer with 4+ years of experience.">
+    
+    <!-- Google Fonts: Inter for UI, Fira Code for technical details -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary: #dd0031; /* Angular Red */
+            --primary-dark: #c3002f;
+            --accent: #2c3e50; /* Dark Blue-Grey */
+            --text-main: #2d3748;
+            --text-light: #718096;
+            --bg-body: #f7fafc;
+            --bg-white: #ffffff;
+            --code-bg: #1e2024;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            color: var(--accent);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Components --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* --- Header / Nav --- */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: calc(100vh - 70px);
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(221, 0, 49, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Mock Code Window */
+        .code-window {
+            background: var(--code-bg);
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .window-header {
+            background: #2b2d31;
+            padding: 0.75rem;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .code-content {
+            padding: 1.5rem;
+            color: #d4d4d4;
+        }
+        .kwd { color: #c586c0; } /* keyword */
+        .str { color: #ce9178; } /* string */
+        .fn { color: #dcdcaa; } /* function */
+        .var { color: #9cdcfe; } /* variable */
+        .comment { color: #6a9955; }
+
+        /* --- Skills Section --- */
+        .skills-section {
+            padding: 5rem 0;
+            background-color: var(--bg-white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-body);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--primary);
+        }
+
+        /* --- Experience Section --- */
+        .experience-section {
+            padding: 5rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-date {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- Projects Section --- */
+        .projects-section {
+            padding: 5rem 0;
+            background-color: var(--bg-white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #edf2f7;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: #edf2f7;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .link-icon {
+            color: var(--text-main);
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .link-icon:hover {
+            color: var(--primary);
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--accent) 0%, #1a202c 100%);
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: #a0aec0;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            color: var(--text-main);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(221, 0, 49, 0.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                margin-top: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fa-brands fa-angular"></i>
+                    DevPortfolio
+                </a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem;">Contact Me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container" id="about">
+        <div class="hero-content">
+            <span class="hero-tag mono">Angular Expert</span>
+            <h1>Building Scalable Web Applications</h1>
+            <p>
+                Hi, I'm a <strong>Senior Angular Developer</strong> with over 4 years of experience specializing in 
+                Single Page Applications (SPAs), Reactive Programming with RxJS, and State Management using NgRx.
+                I write clean, maintainable TypeScript code that scales.
+            </p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">View Work</a>
+                <a href="#contact" class="btn btn-outline" style="margin-left: 10px;">Contact Me</a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <!-- Code Snippet Visual -->
+            <div class="code-window">
+                <div class="window-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="code-content">
+                    <div><span class="kwd">import</span> { Component } <span class="kwd">from</span> <span class="str">'@angular/core'</span>;</div>
+                    <div><span class="kwd">import</span> { Observable } <span class="kwd">from</span> <span class="str">'rxjs'</span>;</div>
+                    <br>
+                    <div><span class="kwd">@Component</span>({</div>
+                    <div>&nbsp;&nbsp;<span class="var">selector</span>: <span class="str">'app-root'</span>,</div>
+                    <div>&nbsp;&nbsp;<span class="var">templateUrl</span>: <span class="str">'./app.component.html'</span>,</div>
+                    <div>&nbsp;&nbsp;<span class="var">styleUrls</span>: [<span class="str">'./app.component.scss'</span>]</div>
+                    <div>})</div>
+                    <div><span class="kwd">export class</span> <span class="fn">AppComponent</span> {</div>
+                    <div>&nbsp;&nbsp;<span class="var">title</span> = <span class="str">'Angular Portfolio'</span>;</div>
+                    <br>
+                    <div>&nbsp;&nbsp;<span class="kwd">constructor</span>(<span class="kwd">private</span> <span class="var">dataService</span>: DataService) {}</div>
+                    <br>
+                    <div>&nbsp;&nbsp;<span class="fn">ngOnInit</span>() {</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Fetching reactive data streams</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">this</span>.<span class="var">dataService</span>.<span class="fn">getData</span>().<span class="fn">subscribe</span>();</div>
+                    <div>&nbsp;&nbsp;}</div>
+                    <div>}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="skills-grid">
+                
+                <article class="skill-card">
+                    <h3><i class="fa-brands fa-angular" style="color: var(--primary);"></i> Core Framework</h3>
+                    <ul class="skill-list">
+                        <li>Angular (v2 to v17+)</li>
+                        <li>TypeScript Expert</li>
+                        <li>RxJS & Reactive Patterns</li>
+                        <li>Angular Material & CDK</li>
+                        <li>Universal (SSR)</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card">
+                    <h3><i class="fa-solid fa-layer-group" style="color: #3b82f6;"></i> State & Architecture</h3>
+                    <ul class="skill-list">
+                        <li>NgRx / NgRx Signal Store</li>
+                        <li>Redux Pattern</li>
+                        <li>Lazy Loading Modules</li>
+                        <li>Standalone Components</li>
+                        <li>SOLID Principles</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card">
+                    <h3><i class="fa-solid fa-code" style="color: #10b981;"></i> Testing & Tools</h3>
+                    <ul class="skill-list">
+                        <li>Jest & Karma</li>
+                        <li>Spectator / Testing Library</li>
+                        <li>Cypress (E2E)</li>
+                        <li>ESLint & Prettier</li>
+                        <li>CI/CD Pipelines (Jenkins/GitHub)</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card">
+                    <h3><i class="fa-brands fa-html5" style="color: #e34c26;"></i> Frontend Adjacent</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3/SCSS</li>
+                        <li>Tailwind CSS</li>
+                        <li>RESTful APIs & GraphQL</li>
+                        <li>Git & GitHub Flow</li>
+                        <li>Docker Basics</li>
+                    </ul>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience Journey</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date mono">2021 - Present</div>
+                    <h3 class="timeline-title">Senior Angular Developer</h3>
+                    <div class="timeline-company">TechFin Solutions</div>
+                    <p>Leading the frontend migration of a legacy banking platform to Angular 15. Implemented complex data visualization using D3.js and optimized bundle size by 40% using lazy loading and tree-shaking strategies.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date mono">2019 - 2021</div>
+                    <h3 class="timeline-title">Frontend Developer</h3>
+                    <div class="timeline-company">Creative Digital Agency</div>
+                    <p>Developed responsive e-commerce SPAs for retail clients. Integrated headless CMS solutions and established a reusable component library using Angular Material to ensure design consistency across projects.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date mono">2018 - 2019</div>
+                    <h3 class="timeline-title">Junior Web Developer</h3>
+                    <div class="timeline-company">StartUp Inc.</div>
+                    <p>Started with jQuery/Vanilla JS, transitioned into Angular. Assisted in building real-time chat dashboards using WebSockets and Firebase.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <img src="https://picsum.photos/seed/angular1/400/250" alt="Dashboard Project" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Angular 16</span>
+                            <span class="tag">RxJS</span>
+                            <span class="tag">NgRx</span>
+                        </div>
+                        <h3>Enterprise Analytics Dashboard</h3>
+                        <p>A high-performance analytics dashboard handling real-time data streams for financial reporting. Features drag-and-drop widgets and customizable layouts.</p>
+                        <div class="project-links">
+                            <a href="#" title="View Code" class="link-icon"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" title="Live Demo" class="link-icon"><i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <img src="https://picsum.photos/seed/angular2/400/250" alt="E-commerce Project" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Angular</span>
+                            <span class="tag">Stripe API</span>
+                            <span class="tag">SCSS</span>
+                        </div>
+                        <h3>E-Commerce Platform</h3>
+                        <p>A fully responsive shopping platform with cart functionality, user authentication, and secure payment gateway integration via Stripe.</p>
+                        <div class="project-links">
+                            <a href="#" title="View Code" class="link-icon"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" title="Live Demo" class="link-icon"><i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card">
+                    <img src="https://picsum.photos/seed/angular3/400/250" alt="Task Manager Project" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Angular Signals</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">PWA</span>
+                        </div>
+                        <h3>TaskMaster PWA</h3>
+                        <p>A Progressive Web App (PWA) for team task management. Utilizes Angular Signals for reactive state management and Firebase for real-time sync.</p>
+                        <div class="project-links">
+                            <a href="#" title="View Code" class="link-icon"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" title="Live Demo" class="link-icon"><i class="fa-solid fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-wrapper">
+                
+                <div class="contact-info">
+                    <h2>Let's build something amazing together</h2>
+                    <p>I am currently open to new opportunities as a Senior Angular Developer. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hello@angulardev.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>San Francisco, CA (Remote available)</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Available for Freelance & Full-time</span>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="How can I help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-stack-overflow"></i></a>
+            </div>
+            <p>&copy; 2023 Angular Developer Portfolio. Built with HTML5, CSS3 & Passion.</p>
+        </div>
+    </footer>
+
+    <!-- Minimal Scripts for Mobile Interaction -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Change icon based on state
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
