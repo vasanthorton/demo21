@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <style>
     :root { --transition-speed: 0.45s; }
 
@@ -226,9 +229,11 @@
     .orbit-dot:nth-child(5){animation-delay:-2.67s;width:8px;height:8px;opacity:.6}
     .orbit-dot:nth-child(6){animation-delay:-5.33s;width:6px;height:6px;opacity:.4}
     .floating-tech{position:absolute;padding:6px 14px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-color);font-size:.75rem;font-weight:500;color:var(--text-secondary);white-space:nowrap;animation:float 5s ease-in-out infinite;box-shadow:var(--shadow-card);transition:all var(--transition-speed)}
-    .floating-tech:nth-child(7){top:-10px;right:-20px;animation-delay:-1s}
-    .floating-tech:nth-child(8){bottom:20px;left:-40px;animation-delay:-3s}
-    .floating-tech:nth-child(9){top:60px;left:-50px;animation-delay:-2s}
+   .floating-tech:nth-child(8){top:-10px;right:-20px;animation-delay:-1s}
+.floating-tech:nth-child(9){bottom:20px;left:-40px;animation-delay:-3s}
+.floating-tech:nth-child(10){top:60px;left:-50px;animation-delay:-2s}
+.floating-tech:nth-child(11){bottom:-20px;right:-30px;animation-delay:-4s}
+.ft-pos-5{top:-30px;left:20px;animation-delay:-0.5s}
 
     /* ===== STATS ===== */
     .stats-section{padding-top:0;padding-bottom:60px}
@@ -496,9 +501,11 @@
             <div class="orbit-dot"></div>
             <div class="orbit-dot"></div>
             <div class="orbit-dot"></div>
-            <div class="floating-tech"><i class="fa-brands fa-angular" style="color:#dd0031;margin-right:4px"></i> Angular</div>
-            <div class="floating-tech"><i class="fa-brands fa-js" style="color:#f7df1e;margin-right:4px"></i> JavaScript</div>
-            <div class="floating-tech"><i class="fa-brands fa-css3-alt" style="color:#264de4;margin-right:4px"></i> CSS3</div>
+        <div class="floating-tech ft-pos-1"><i class="fa-brands fa-angular" style="color:#dd0031;margin-right:4px"></i> Angular</div>
+<div class="floating-tech ft-pos-2"><i class="fa-solid fa-code" style="color:#3178c6;margin-right:4px"></i> TypeScript</div>
+<div class="floating-tech ft-pos-3"><i class="fa-brands fa-js" style="color:#f7df1e;margin-right:4px"></i> JavaScript</div>
+<div class="floating-tech ft-pos-4"><i class="fa-brands fa-css3-alt" style="color:#264de4;margin-right:4px"></i> CSS3</div>
+<div class="floating-tech ft-pos-5"><i class="fa-brands fa-bootstrap" style="color:#7952b3;margin-right:4px"></i> Bootstrap</div>
           </div>
         </div>
       </div>
@@ -663,6 +670,7 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
+     <!-- ===== PROJECTS ===== -->
     <section id="projects">
       <div class="section-header animate-on-scroll">
         <div class="section-tag"><i class="fa-solid fa-rocket"></i> Projects Undertaken</div>
@@ -673,7 +681,7 @@
         <!-- Project 1: Library Management System -->
         <div class="project-card animate-on-scroll stagger-1">
           <div class="project-img-wrapper">
-            <img src="https://picsum.photos/seed/library-rfid-system/800/400.jpg" alt="Library Management System" class="project-img">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=400&fit=crop" alt="Library Management System" class="project-img">
             <div class="project-duration">July 2022 — Aug 2023</div>
           </div>
           <div class="project-content">
@@ -693,7 +701,7 @@
         <!-- Project 2: JEVELAR -->
         <div class="project-card animate-on-scroll stagger-2">
           <div class="project-img-wrapper">
-            <img src="https://picsum.photos/seed/jevelar-jewellery-ar/800/400.jpg" alt="JEVELAR" class="project-img">
+            <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=400&fit=crop" alt="JEVELAR" class="project-img">
             <div class="project-duration">Aug 2023 — Oct 2024</div>
           </div>
           <div class="project-content">
@@ -713,7 +721,7 @@
         <!-- Project 3: EDXAR -->
         <div class="project-card animate-on-scroll stagger-3">
           <div class="project-img-wrapper">
-            <img src="https://picsum.photos/seed/edxar-neet-coaching/800/400.jpg" alt="EDXAR" class="project-img">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=400&fit=crop" alt="EDXAR" class="project-img">
             <div class="project-duration">Oct 2024 — Present</div>
           </div>
           <div class="project-content">
@@ -730,7 +738,7 @@
           </div>
         </div>
 
-        <!-- Project Details Card -->
+        <!-- Project Highlights Card -->
         <div class="project-card animate-on-scroll stagger-4" style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px 32px;text-align:center">
           <div style="width:64px;height:64px;border-radius:20px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);font-size:1.5rem;transition:all var(--transition-speed)">
             <i class="fa-solid fa-lightbulb"></i>
